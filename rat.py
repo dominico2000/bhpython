@@ -11,7 +11,7 @@ import os
 
 from github3 import login
 
-trojan_id = "abc"
+trojan_id = "test"
 
 trojan_config = "%s.json" % trojan_id
 data_path     = "data/%s/" % trojan_id
@@ -53,8 +53,8 @@ class GitImporter(object):
 
 
 def connect_to_github():
-    gh = login(username="dominico2000",token="6dc1d0ce839eee481947bee0943b09331324a668")
-    repo = gh.repository("dominico2000","test")
+    gh = login(username="dominico2000",token="f68c44033df6dd24632745ffc897f3786d8ce3dd")
+    repo = gh.repository("dominico2000","bhpython")
     branch = repo.branch("master")   
 
     return gh,repo,branch
