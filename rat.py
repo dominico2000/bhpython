@@ -30,7 +30,7 @@ class GitImporter(object):
     def find_module(self,fullname,path=None):
         
         if configured:
-            print "[*] Próba pobrania pliku %s" % fullname
+            print "[*] Trying download %s" % fullname
             new_library = get_file_contents("modules/%s" % fullname)
             
             if new_library is not None:
@@ -68,7 +68,7 @@ def get_file_contents(filepath):
     for filename in tree.tree:
         
         if filepath in filename.path:
-            print "[*] Znaleziono plik %s" % filepath
+            print "[*] Find file %s" % filepath
             
             blob = repo.blob(filename._json_data['sha'])
             
